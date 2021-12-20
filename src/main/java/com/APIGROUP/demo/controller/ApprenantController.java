@@ -46,7 +46,7 @@ public class ApprenantController {
     return this.apprenantServiceImp.supprimer_apprenant(id);
     }
     
-    // *************************************** Liste par apprenant **************************************
+    // *************************************** Liste par id apprenant **************************************
     @GetMapping("/InfoApp/{id}")
     public Apprenant getApprenantById(@PathVariable Long id){
     return this.apprenantServiceImp.getApprenantsById(id);
