@@ -15,7 +15,7 @@ public class GroupeServiceImp implements GroupeService{
     GroupeRepositories groupeRepositories;
     @Override
     public String ajout_groupe(Groupe groupe) {
-        Optional<Groupe> groupNom = groupeRepositories.findByNom(groupe.getName());
+        Optional<Groupe> groupNom = groupeRepositories.findByName(groupe.getName());
         if (groupNom.isPresent()){
             return "nom";
         }

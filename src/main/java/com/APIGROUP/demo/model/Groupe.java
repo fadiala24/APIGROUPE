@@ -1,20 +1,16 @@
 package com.APIGROUP.demo.model;
-
-
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
 @Table(name = "GROUPE")
-
 public class Groupe {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false, unique = true)
     private  String name;
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private Date date_creation;
 
     public Long getId() {
