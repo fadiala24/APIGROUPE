@@ -1,8 +1,6 @@
 package com.APIGROUP.demo.model;
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "GROUPE")
@@ -13,7 +11,20 @@ public class Groupe {
     @Column(nullable = false, unique = true)
     private  String name;
     @Column(nullable = false)
-    private Date date_creation;
+    private long groupNum;
+
+    public long getGroupNum() {
+        return groupNum;
+    }
+
+    public void setGroupNum(long groupNum) {
+        this.groupNum = groupNum;
+    }
+
+    public Groupe(Long id, long groupNum) {
+        this.id = id;
+        this.groupNum = groupNum;
+    }
 
     public Long getId() {
         return id;
@@ -25,14 +36,6 @@ public class Groupe {
 
     public String getName() {
         return name;
-    }
-
-    public Date getDate_creation() {
-        return date_creation;
-    }
-
-    public void setDate_creation(Date date_creation) {
-        this.date_creation = date_creation;
     }
 
     public void setName(String name) {

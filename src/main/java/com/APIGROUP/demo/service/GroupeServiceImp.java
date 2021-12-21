@@ -44,7 +44,7 @@ public class GroupeServiceImp implements GroupeService{
        Groupe groupeExist = groupeRepositories.findById(id).get();
 
        groupeExist.setName(groupe.getName());
-       groupeExist.setDate_creation(groupe.getDate_creation());
+       groupeExist.setGroupNum(groupe.getGroupNum());
        groupeRepositories.save(groupeExist);
        return "Modification effectuer avec succes";
     }
