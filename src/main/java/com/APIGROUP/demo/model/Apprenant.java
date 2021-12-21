@@ -6,12 +6,10 @@
 package com.APIGROUP.demo.model;
 
 import com.APIGROUP.demo.Etat;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -42,7 +40,12 @@ public class Apprenant {
     private int telephone;
     
     @Column(nullable = true)
+    @Enumerated(EnumType.STRING)
     private Etat etat;
+
+
+
+    private Boolean supprimer = false;
 
     public String getNom() {
         return nom;
@@ -76,6 +79,14 @@ public class Apprenant {
         this.telephone = telephone;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public Etat getEtat() {
         return etat;
     }
@@ -83,6 +94,12 @@ public class Apprenant {
     public void setEtat(Etat etat) {
         this.etat = etat;
     }
-    
-    
+
+    public Boolean getSupprimer() {
+        return supprimer;
+    }
+
+    public void setSupprimer(Boolean supprimer) {
+        this.supprimer = supprimer;
+    }
 }

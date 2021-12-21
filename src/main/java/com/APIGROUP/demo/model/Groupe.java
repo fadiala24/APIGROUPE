@@ -1,6 +1,8 @@
 package com.APIGROUP.demo.model;
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "GROUPE")
@@ -36,6 +38,7 @@ public class Groupe {
     public void setName(String name) {
         this.name = name;
     }
+
 
 
 }

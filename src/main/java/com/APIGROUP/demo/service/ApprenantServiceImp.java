@@ -5,21 +5,31 @@
  */
 package com.APIGROUP.demo.service;
 
+import com.APIGROUP.demo.Etat;
 import com.APIGROUP.demo.model.Apprenant;
+import com.APIGROUP.demo.model.Groupe;
 import com.APIGROUP.demo.repositories.ApprenantRepositories;
 import java.util.List;
 import java.util.Optional;
+
+import com.APIGROUP.demo.repositories.GroupeRepositories;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
 
 /**
  *
  * @author fadiala.sidibe
  */
 @Service
+@Transactional
 public class ApprenantServiceImp implements ApprenantService {
     @Autowired
     ApprenantRepositories apprenantRepositories;
+
+    @Autowired
+    GroupeRepositories groupeRepositories;
 
     @Override
     public String ajout_apprenant(Apprenant apprenant) {
@@ -44,8 +54,12 @@ public class ApprenantServiceImp implements ApprenantService {
     @Override
     public String supprimer_apprenant( Long id) {
  //To change body of generated methods, choose Tools | Templates.
-    this.apprenantRepositories.deleteById(id);
-    return "Apprenant supprimer avec succes";
+    // this.apprenantRepositories.deleteById(id);
+        Apprenant apprenant = apprenantRepositories.findById(id).get();
+
+   apprenant.setSupprimer(true);
+   apprenant.setEtat(Etat.DESACTIVER);
+    return "Vous avez supprimez un apprenant "+apprenant.getPrenom()+" "+apprenant.getNom();
     }
 
     @Override
@@ -65,7 +79,5 @@ public class ApprenantServiceImp implements ApprenantService {
          return "Apprenant modifié avec succes";
     }
 
-   
 
-    
 }
