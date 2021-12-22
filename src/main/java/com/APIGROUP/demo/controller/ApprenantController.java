@@ -37,7 +37,7 @@ public class ApprenantController {
     
     @GetMapping("/listApp")
     List<Apprenant> listApp(){
-    return this.apprenantService.listApprenant();
+        return this.apprenantService.listApprenant();
     }
     
     // ******************************************* Suppression de l'apprenant ***************************

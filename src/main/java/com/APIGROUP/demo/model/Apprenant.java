@@ -6,6 +6,7 @@
 package com.APIGROUP.demo.model;
 
 import com.APIGROUP.demo.Etat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -27,6 +28,18 @@ public class Apprenant {
 
     private Long id;
 
+    @JsonIgnore
+    @ManyToMany(mappedBy = "apprenants")
+    private List<Groupe> groupes;
+
+    public Promotion getPromotion() {
+        return promotion;
+    }
+
+    public void setPromotion(Promotion promotion) {
+        this.promotion = promotion;
+    }
+
     @Column(nullable = true)
     private String nom;
     
@@ -43,6 +56,8 @@ public class Apprenant {
     @Enumerated(EnumType.STRING)
     private Etat etat;
 
+    @ManyToOne
+    private Promotion promotion;
 
 
     private Boolean supprimer = false;

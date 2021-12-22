@@ -7,5 +7,5 @@ import javax.swing.*;
 import java.util.Optional;
 
 public interface GroupeRepositories extends JpaRepository <Groupe, Long> {
-    Optional<Groupe> findByName(String nom);
+
 }

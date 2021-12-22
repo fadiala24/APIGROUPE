@@ -1,6 +1,7 @@
 package com.APIGROUP.demo.model;
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "GROUPE")
@@ -8,22 +9,21 @@ public class Groupe {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false, unique = true)
-    private  String name;
     @Column(nullable = false)
-    private long groupNum;
+    private  String name;
 
-    public long getGroupNum() {
-        return groupNum;
+    @ManyToMany
+    private List<Apprenant> apprenants;
+
+    public Groupe() {
     }
 
-    public void setGroupNum(long groupNum) {
-        this.groupNum = groupNum;
+    public List<Apprenant> getApprenants() {
+        return apprenants;
     }
 
-    public Groupe(Long id, long groupNum) {
-        this.id = id;
-        this.groupNum = groupNum;
+    public void setApprenants(List<Apprenant> apprenants) {
+        this.apprenants = apprenants;
     }
 
     public Long getId() {

@@ -44,5 +44,10 @@ public class GroupeController {
          return this.groupeServiceImp.modifier_groupe(groupe, id);
     }
 
+    // ************************************** Generer les groupes automatiques ******************************
 
+    @GetMapping("/genGroupe/{nbreGroupe}")
+    public List<Groupe> genereGroupe(@PathVariable("nbreGroupe") Integer nombreGroupe) {
+        return groupeServiceImp.generateByNbreGroupe(nombreGroupe);
+    }
 }
