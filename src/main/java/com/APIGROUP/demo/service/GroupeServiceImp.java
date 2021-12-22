@@ -8,10 +8,9 @@ import com.APIGROUP.demo.repositories.PromotionRepositorie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Random;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @Service
 public class GroupeServiceImp implements GroupeService{
@@ -58,7 +57,7 @@ public class GroupeServiceImp implements GroupeService{
 
     @Override
     public List<Groupe> generateByNbreGroupe(Integer nombreGroupe) {
-
+/*
         // ************************************* Classe Random = Ordre Aléatoire *****************************
         Random random = new Random();
 
@@ -116,7 +115,30 @@ public class GroupeServiceImp implements GroupeService{
             }
         }
         return groupeListGenerate;
-    }
+    } */
+//Listes des apprenants
+        List<Apprenant> allApprenants = apprenantRepositories.findAll();
 
+        //Shuffle liste
+        Collections.shuffle(allApprenants);
+
+        List<List<Apprenant>> listGroupeGenetayed = IntStream.range(0, allApprenants.size())
+                .boxed()
+                .collect(Collectors.groupingBy(i -> i % nombreGroupe))
+                .values()
+                .stream()
+                .map(il -> il.stream().map(allApprenants::get).collect(Collectors.toList()))
+                .collect(Collectors.toList());
+
+        for(int i = 0; i < nombreGroupe; i++)
+        {
+            Groupe groupe = new Groupe();
+            groupe.setName("Groupe "+i);
+            groupe.setApprenants(listGroupeGenetayed.get(i));
+            groupeRepositories.save(groupe);
+        }
+
+        return listGroup();
+    }
 
 }
