@@ -119,9 +119,9 @@ public class GroupeServiceImp implements GroupeService{
 //Listes des apprenants
         List<Apprenant> allApprenants = apprenantRepositories.findAll();
 
-        //Shuffle liste
+        //   Permuter les elements de la liste des apprenants au hasard
         Collections.shuffle(allApprenants);
-
+          // Ici, le paramètre startInclusive(0) inclut la valeur de départ, tandis que endExclusive (allApprenants.size()) exclut la dernière valeur
         List<List<Apprenant>> listGroupeGenetayed = IntStream.range(0, allApprenants.size())
                 .boxed()
                 .collect(Collectors.groupingBy(i -> i % nombreGroupe))
