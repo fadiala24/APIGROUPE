@@ -57,7 +57,7 @@ public class GroupeServiceImp implements GroupeService{
 
     @Override
     public List<Groupe> generateByNbreGroupe(Integer nombreGroupe) {
-/*
+
         // ************************************* Classe Random = Ordre Aléatoire *****************************
         Random random = new Random();
 
@@ -102,7 +102,7 @@ public class GroupeServiceImp implements GroupeService{
                 for(int j = 0; j < nbreMembreParGroup; j++)
                 {
                     int randomIdex = random.nextInt(allApprenantList.size());
-                    Apprenant randomApprenant = allApprenantList.get(randomIdex);
+                    Apprenant randomApprenant = allApprenantList.get(j);
                     apprenantList.add(randomApprenant);
                     allApprenantList.remove(randomIdex);
                 }
@@ -115,7 +115,8 @@ public class GroupeServiceImp implements GroupeService{
             }
         }
         return groupeListGenerate;
-    } */
+    }
+        /*
 //Listes des apprenants
         List<Apprenant> allApprenants = apprenantRepositories.findAll();
 
@@ -139,6 +140,6 @@ public class GroupeServiceImp implements GroupeService{
         }
 
         return listGroup();
-    }
+    }    */
 
 }
